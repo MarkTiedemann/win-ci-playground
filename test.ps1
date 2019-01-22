@@ -2,8 +2,7 @@ $ErrorActionPreference = 'Stop'
 $VerbosePreference = 'Continue'
 Write-Output $PSVersionTable
 Set-PSDebug -Trace 2
-$Content = (Invoke-WebRequest 'https://github.com/denoland/deno/releases').Content
-Write-Output $Content
+$Response = Invoke-WebRequest 'https://github.com/denoland/deno/releases'
 $HTMLFile = New-Object -Com 'HTMLFile'
-$HTMLFile.IHTMLDocument2_write($Content)
+$HTMLFile.IHTMLDocument2_write($Response.Content)
 $HTMLFile.all.tags('a')
