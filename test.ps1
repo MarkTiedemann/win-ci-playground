@@ -6,3 +6,4 @@ $Content = (Invoke-WebRequest 'https://github.com/denoland/deno/releases').Conte
 Write-Output $Content
 $HTMLFile = New-Object -Com 'HTMLFile'
 $HTMLFile.IHTMLDocument2_write($Content)
+$HTMLFile.all.tags('a')
