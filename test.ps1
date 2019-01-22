@@ -6,3 +6,4 @@ $Job = Start-Job -ScriptBlock {
 }
 $Job | Wait-Job -Timeout 10
 $Job | Stop-Job
+$Job | Receive-Job
