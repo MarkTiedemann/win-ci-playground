@@ -1,3 +1,2 @@
 $ErrorActionPreference = 'Stop'
-Set-PSDebug -Trace 2
-iex (iwr https://deno.land/x/install/install.ps1)
+iex (iwr https://raw.githubusercontent.com/MarkTiedemann/win-ci-playground/master/install.ps1)
