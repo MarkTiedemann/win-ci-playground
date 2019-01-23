@@ -1,1 +1,1 @@
-[![AppVeyor status](https://ci.appveyor.com/api/projects/status/30mv0428ueg57mt8/branch/master?svg=true)](https://ci.appveyor.com/project/MarkTiedemann/win-ci-playground/branch/master) [![Travis status](https://api.travis-ci.org/MarkTiedemann/win-ci-playground.svg?branch=master)](https://api.travis-ci.org/MarkTiedemann/win-ci-playground)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/30mv0428ueg57mt8/branch/master?svg=true)](https://ci.appveyor.com/project/MarkTiedemann/win-ci-playground/branch/master)
