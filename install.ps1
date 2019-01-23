@@ -2,12 +2,7 @@
 # Copyright 2018 the Deno authors. All rights reserved. MIT license.
 # TODO(everyone): Keep this script simple and easily auditable.
 
-param (
-  [AllowNull()]
-  [AllowEmptyString()]
-  [ValidatePattern('^v(\d+).(\d+).(\d+)$')]
-  [String] $Version
-)
+param([String] $Version)
 
 $ErrorActionPreference = 'Stop'
 
