@@ -2,9 +2,11 @@
 # Copyright 2018 the Deno authors. All rights reserved. MIT license.
 # TODO(everyone): Keep this script simple and easily auditable.
 
-param($Version)
-
 $ErrorActionPreference = 'Stop'
+
+if ($args.Count -gt 0) {
+  $Version = $args.Get(0)
+}
 
 if ($PSVersionTable.PSVersion.Major -lt 6) {
   $IsWindows = $true
