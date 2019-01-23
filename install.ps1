@@ -4,10 +4,7 @@
 
 Set-PSDebug -Trace 2
 
-param(
-  [ValidatePattern('^v(\d+).(\d+).(\d+)$')]
-  [String] $Version
-)
+param([ValidatePattern('^v(\d+).(\d+).(\d+)$')][String]$Version)
 
 $ErrorActionPreference = 'Stop'
 
