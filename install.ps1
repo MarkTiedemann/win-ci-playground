@@ -4,7 +4,7 @@
 
 Set-PSDebug -Trace 2
 
-param (
+param(
   [ValidatePattern('^v(\d+).(\d+).(\d+)$')]
   [String] $Version
 )
