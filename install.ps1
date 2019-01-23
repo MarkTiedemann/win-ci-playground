@@ -2,9 +2,12 @@
 # Copyright 2018 the Deno authors. All rights reserved. MIT license.
 # TODO(everyone): Keep this script simple and easily auditable.
 
-Set-PSDebug -Trace 2
-
-param([ValidatePattern('^v(\d+).(\d+).(\d+)$')][String]$Version)
+param (
+  [AllowNull()]
+  [AllowEmptyString()]
+  [ValidatePattern('^v(\d+).(\d+).(\d+)$')]
+  [String] $Version
+)
 
 $ErrorActionPreference = 'Stop'
 
