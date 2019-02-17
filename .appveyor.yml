@@ -1,7 +1,3 @@
 build: off
-install:
-  - ps: iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
-  - ps: scoop install pwsh
 test_script:
   - ps: .\test.ps1
-  - ps: pwsh .\test.ps1
