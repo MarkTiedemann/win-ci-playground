@@ -1,3 +1,4 @@
 build: off
 test_script:
-  - ps: .\test.ps1
+  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v ProductName
+  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v InstallationType
