@@ -1,8 +1,5 @@
 image:
-  - Windows Server 2012 R2
-  - Windows Server 2016
-  - Visual Studio 2017 Preview
-  - Docker
-  - Windows 10 SDK 10.0.26624
+  - Visual Studio 2015
+  - Visual Studio 2017
 build: off
 test_script: test
