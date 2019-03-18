@@ -1,3 +1,2 @@
 build: off
-test_script:
-  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v
+test_script: test
