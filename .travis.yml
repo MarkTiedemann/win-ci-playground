@@ -1,4 +1,4 @@
 os: windows
-language: minimal
+language: shell
 script:
-  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v
