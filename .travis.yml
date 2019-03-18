@@ -1,5 +1,4 @@
 os: windows
 language: minimal
 script:
-  - reg query /?
-  - echo "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+  - reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /s
