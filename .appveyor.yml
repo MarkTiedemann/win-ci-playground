@@ -2,4 +2,5 @@ image: Visual Studio 2017
 build: off
 test_script:
   - ver.cmd
-  - docker run microsoft/nanoserver@sha256:8f78a4a7da4464973a5cd239732626141aec97e69ba3e4023357628630bc1ee2 dir
+  - where dir
+  - docker run microsoft/nanoserver@sha256:8f78a4a7da4464973a5cd239732626141aec97e69ba3e4023357628630bc1ee2 C:\Windows\System32\dir.exe
