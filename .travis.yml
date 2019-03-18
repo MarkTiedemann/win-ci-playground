@@ -1,3 +1,3 @@
 os: windows
 language: shell
-script: cmd /c test
+script: cmd.exe /c test.cmd
