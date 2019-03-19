@@ -32,14 +32,14 @@ function Query-Wmi ($Key) {
   }
 }
 
-$List = @()
-$List += Query-Reg CurrentVersion
-$List += Query-Wmi Version
-$List += Query-Reg CurrentBuild
-$List += Query-Wmi BuildNumber
-$List += Query-Reg InstallationType
-$List += Query-Reg EditionID
-$List += Query-Reg ProductName
-$List += Query-Wmi Caption
-$List += Query-Wmi Name
-$List | Format-Table -Property Query, Key, Value
+@(
+  (Query-Reg CurrentVersion),
+  (Query-Wmi Version),
+  (Query-Reg CurrentBuild),
+  (Query-Wmi BuildNumber),
+  (Query-Reg InstallationType),
+  (Query-Reg EditionID),
+  (Query-Reg ProductName),
+  (Query-Wmi Caption),
+  (Query-Wmi Name)
+) | Format-Table -Property Query, Key, Value
