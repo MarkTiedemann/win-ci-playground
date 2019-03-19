@@ -5,5 +5,5 @@ reg query %key% /v CurrentBuild | findstr CurrentBuild
 reg query %key% /v InstallationType | findstr InstallationType
 reg query %key% /v EditionID | findstr EditionID
 reg query %key% /v ProductName | findstr ProductName
-wmic os get caption || echo "No Caption available"
-wmic os get /?
+wmic os get caption
+wmic os get /all
