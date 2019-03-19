@@ -32,14 +32,14 @@ function Query-Wmi ($Key) {
   }
 }
 
-@(
-  (Query-Reg CurrentVersion),
-  (Query-Wmi Version),
-  (Query-Reg CurrentBuild),
-  (Query-Wmi BuildNumber),
-  (Query-Reg InstallationType),
-  (Query-Reg EditionID),
-  (Query-Reg ProductName),
-  (Query-Wmi Caption),
-  (Query-Wmi Name)
-)
+$Table = @()
+$Table += Query-Reg CurrentVersion
+$Table += Query-Wmi Version
+$Table += Query-Reg CurrentBuild
+$Table += Query-Wmi BuildNumber
+$Table += Query-Reg InstallationType
+$Table += Query-Reg EditionID
+$Table += Query-Reg ProductName
+$Table += Query-Wmi Caption
+$Table += Query-Wmi Name
+$Table | Format-Table
