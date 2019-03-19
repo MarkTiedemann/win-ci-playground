@@ -3,15 +3,19 @@ $ErrorActionPreference = 'Stop'
 $Reg = "${Env:SystemRoot}\System32\reg.exe"
 $Wmic = "${Env:SystemRoot}\System32\wbem\WMIC.exe"
 
-function Query-Registry ($Key) {
+function Query-Reg ($Key) {
   $Query = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
   $Result = & $Reg query $Query /v $Key
   $Match = $Result -match "^\s+$Key\s+REG_SZ\s+(.+)$"
   $Value = $Match -replace "^\s+$Key\s+REG_SZ\s+(.+)$", '$1'
-  Write-Host "$Key = $Value"
+  New-Object [PSCustomObject] @{
+    Query = 'reg'
+    Key   = $Key
+    Value = $Value
+  }
 }
 
-function Query-WMI ($Key) {
+function Query-Wmi ($Key) {
   $Query = 'os'
   $Result = & $Wmic $Query get $Key
   if ($Result -match "^$Key\s+$") {
@@ -21,19 +25,21 @@ function Query-WMI ($Key) {
     $Match = $Result -match "^$Key\s= (.+)$"
     $Value = $Match -replace "^$Key\s= (.+)$", '$1'
   }
-  Write-Host "$Key = $Value"
+  New-Object [PSCustomObject] @{
+    Query = 'wmi'
+    Key   = $Key
+    Value = $Value
+  }
 }
 
-Query-Registry CurrentVersion
-Query-WMI Version
-
-Query-Registry CurrentBuild
-Query-WMI BuildNumber
-
-Query-Registry InstallationType
-
-Query-Registry EditionID
-
-Query-Registry ProductName
-Query-WMI Caption
-Query-WMI Name
+@(
+  (Query-Reg CurrentVersion),
+  (Query-Wmi Version),
+  (Query-Reg CurrentBuild),
+  (Query-Wmi BuildNumber),
+  (Query-Reg InstallationType),
+  (Query-Reg EditionID),
+  (Query-Reg ProductName),
+  (Query-Wmi Caption),
+  (Query-Wmi Name)
+)
