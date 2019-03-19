@@ -7,7 +7,7 @@ function Query-Reg ($Key) {
   $Query = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
   $Result = & $Reg query $Query /v $Key
   $Match = $Result -match "^\s+$Key\s+REG_SZ\s+(.+)$"
-  $Value = $Match -replace "^\s+$Key\s+REG_SZ\s+(.+)$", '$1'
+  $Value = ($Match -replace "^\s+$Key\s+REG_SZ\s+(.+)$", '$1')[0]
   New-Object PSObject -Property @{
     Query = 'reg'
     Key   = $Key
@@ -42,4 +42,4 @@ $List += Query-Reg EditionID
 $List += Query-Reg ProductName
 $List += Query-Wmi Caption
 $List += Query-Wmi Name
-$List | Format-Table
+$List | Format-Table -Property Query, Key, Value
