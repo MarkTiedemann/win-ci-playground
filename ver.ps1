@@ -8,7 +8,7 @@ function Query-Reg ($Key) {
   $Result = & $Reg query $Query /v $Key
   $Match = $Result -match "^\s+$Key\s+REG_SZ\s+(.+)$"
   $Value = $Match -replace "^\s+$Key\s+REG_SZ\s+(.+)$", '$1'
-  New-Object [PSCustomObject] @{
+  New-Object PSCustomObject @{
     Query = 'reg'
     Key   = $Key
     Value = $Value
@@ -25,7 +25,7 @@ function Query-Wmi ($Key) {
     $Match = $Result -match "^$Key\s= (.+)$"
     $Value = $Match -replace "^$Key\s= (.+)$", '$1'
   }
-  New-Object [PSCustomObject] @{
+  New-Object PSCustomObject @{
     Query = 'wmi'
     Key   = $Key
     Value = $Value
