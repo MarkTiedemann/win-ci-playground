@@ -11,16 +11,29 @@ function Query-Registry ($Key) {
   Write-Host "$Key = $Value"
 }
 
+function Query-WMI ($Key) {
+  $Query = 'os'
+  $Result = & $Wmic $Query get $Key
+  if ($Result -match "^$Key\s+$") {
+    $Match = $Result -split "`r`n"
+    $Value = $Result[2]
+  } else {
+    $Match = $Result -match "^$Key\s= (.+)$"
+    $Value = $Match -replace "^$Key\s= (.+)$", '$1'
+  }
+  Write-Host "$Key = $Value"
+}
+
 Query-Registry CurrentVersion
-& $Wmic os get Version
+Query-WMI Version
 
 Query-Registry CurrentBuild
-& $Wmic os get BuildNumber
+Query-WMI BuildNumber
 
 Query-Registry InstallationType
 
 Query-Registry EditionID
 
 Query-Registry ProductName
-& $Wmic os get Caption
-& $Wmic os get Name
+Query-WMI Caption
+Query-WMI Name
