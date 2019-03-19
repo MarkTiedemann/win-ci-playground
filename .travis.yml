@@ -1,3 +1,4 @@
 os: windows
 language: shell
-script: powershell.exe -f ver.ps1
+script:
+  - powershell.exe -c "Set-Executionpolicy -Scope CurrentUser -ExecutionPolicy UnRestricted -Force; .\ver.ps1"
