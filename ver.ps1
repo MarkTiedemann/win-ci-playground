@@ -23,9 +23,7 @@ function Query-Wmi ($Key) {
     $Value = $Result[2]
   } else {
     Write-Host "Result = $Result"
-    $Match = $Result -match "^$Key\s+= (.+)$"
-    Write-Host "Match = $Match"
-    $Value = ($Match -replace "^$Key\s+= (.+)$", '$1')[0]
+    $Value = $Result -replace "^$Key\s+= (.+)$", '$1'
     Write-Host "Value = $Value"
   }
   New-Object PSObject -Property @{
