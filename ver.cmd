@@ -14,3 +14,6 @@ reg query %key% /v EditionID | findstr EditionID
 reg query %key% /v ProductName | findstr ProductName
 wmic os get Caption
 wmic os get Name
+
+where reg
+where wmic
