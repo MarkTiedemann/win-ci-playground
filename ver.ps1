@@ -22,8 +22,8 @@ function Query-Wmi ($Key) {
     $Match = $Result -split "`r`n"
     $Value = $Result[2]
   } else {
-    $Match = $Result -match "^$Key\s= (.+)$"
-    $Value = $Match -replace "^$Key\s= (.+)$", '$1'
+    $Match = $Result -match "^$Key\s+= (.+)$"
+    $Value = $Match -replace "^$Key\s+= (.+)$", '$1'
   }
   New-Object PSObject -Property @{
     Query = 'wmi'
