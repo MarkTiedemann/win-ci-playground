@@ -18,13 +18,10 @@ function Query-Reg ($Key) {
 function Query-Wmi ($Key) {
   $Query = 'os'
   $Result = & $Wmic $Query get $Key
-  if ($Result -match "^$Key\s+$") {
-    $Match = $Result -split "`r`n"
-    $Value = $Result[2]
+  $Value = if ($Result -match "^$Key\s+$") {
+    ($Result -split "`r`n")[2]
   } else {
-    Write-Host "Result = $Result"
-    $Value = $Result -replace "^$Key\s+= (.+)$", '$1'
-    Write-Host "Value = $Value"
+    $Result -replace "^$Key\s+= (.+)$", '$1'
   }
   New-Object PSObject -Property @{
     Query = 'wmi'
