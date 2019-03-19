@@ -1,9 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
-$Reg = "${Env:SystemRoot}\System32\reg.exe"
-$Wmic = "${Env:SystemRoot}\System32\wbem\WMIC.exe"
-
-function Query-Reg ($Key) {
+function Query-Reg ([String] $Key) {
+  $Reg = "${Env:SystemRoot}\System32\reg.exe"
   $Query = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
   $Result = & $Reg query $Query /v $Key
   $Match = $Result -match "^\s+$Key\s+REG_SZ\s+(.+)$"
@@ -15,7 +13,8 @@ function Query-Reg ($Key) {
   }
 }
 
-function Query-Wmi ($Key) {
+function Query-Wmi ([String] $Key) {
+  $Wmic = "${Env:SystemRoot}\System32\wbem\wmic.exe"
   $Query = 'os'
   $Result = & $Wmic $Query get $Key
   $Value = if ($Result -match "^$Key\s+$") {
