@@ -6,7 +6,9 @@ steps:
     lfs: false
     fetchDepth: 1
     submodules: false
-  - script: set
-    displayName: Print environment
-  - powershell: $env:path -split ';' | % { dir $_\*.exe | % { $_.fullname } } | sort
-    displayName: Print binaries
+  - powershell: gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+    displayName: Print operating system infos
+  - powershell: 'ls env:'
+    displayName: Print environment variables
+  - powershell: $env:path -split ';' | % { ls $_\*.exe | % { $_.fullname } } | sort
+    displayName: Print available binaries
