@@ -3,7 +3,7 @@ jobs:
     pool:
       vmImage: windows-2019
     steps:
-      - powershell: .\ver.ps1
+      - powershell: .\test.ps1
   - job: win1803
     pool:
       vmImage: win1803
