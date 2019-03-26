@@ -3,7 +3,7 @@ jobs:
     pool:
       vmImage: windows-2019
     steps:
-      - powershell: .\vs.ps1
+      - powershell: get-variable
 #  - job: win1803
 #    pool:
 #      vmImage: win1803
