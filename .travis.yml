@@ -1,4 +1,0 @@
-os: windows
-language: shell
-script:
-  - powershell.exe -c "Set-Executionpolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force; .\ver.ps1"

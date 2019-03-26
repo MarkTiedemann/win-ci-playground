@@ -1,21 +1,4 @@
-jobs:
-  - job: windows2019
-    pool:
-      vmImage: windows-2019
-    steps:
-      - powershell: get-variable
-#  - job: win1803
-#    pool:
-#      vmImage: win1803
-#    steps:
-#      - powershell: .\ver.ps1
-#  - job: win2016
-#    pool:
-#      vmImage: vs2017-win2016
-#    steps:
-#      - powershell: .\ver.ps1
-#  - job: win2012r2
-#    pool:
-#      vmImage: vs2015-win2012r2
-#    steps:
-#      - powershell: .\ver.ps1
+pool:
+  vmImage: windows-2019
+steps:
+  - powershell: get-variable
