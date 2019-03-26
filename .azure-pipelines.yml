@@ -1,4 +1,12 @@
 pool:
   vmImage: windows-2019
 steps:
+  - checkout: self
+    clean: true
+    lfs: false
+    fetchDepth: 1
+    submodules: false
   - script: set
+    displayName: Print environment
+  - powershell: $env:path -split ';' | % { dir $_\*.exe | % { $_.fullname } } | sort
+    displayName: Print binaries
