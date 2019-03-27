@@ -1,5 +1,5 @@
 pool:
-  vmImage: windows-2019
+  vmImage: vs2017-win2016
 steps:
   - checkout: self
     clean: true
@@ -12,7 +12,3 @@ steps:
     displayName: Print environment variables
   - powershell: $env:path -split ';' | % { ls $_\*.exe | % { $_.fullname } } | sort
     displayName: Print available binaries
-  - powershell: gci 'HKLM:\SOFTWARE\Wow6432Node\Microsoft\VisualStudio' -r
-    displayName: List VS registry
-  - powershell: ls "C:\Program Files (x86)\Microsoft Visual Studio" -r -de 10 -file | where { $_.name -like "*.exe" } | % { $_.fullname } | sort
-    displayName: List VS binaries
