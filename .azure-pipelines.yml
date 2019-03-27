@@ -16,6 +16,10 @@ jobs:
         displayName: Print available binaries
       - powershell: .\vs.ps1
         displayName: Print installed VS packages
+      - powershell: ls 'C:\Program Files (x86)\Microsoft SDKs\Windows'
+        displayName: List Windows SDKs
+      - powershell: ls 'C:\Program Files (x86)\Windows Kits'
+        displayName: List Windows Kits
   - job: vs2019
     pool:
       vmImage: windows-2019
@@ -33,3 +37,7 @@ jobs:
         displayName: Print available binaries
       - powershell: .\vs.ps1
         displayName: Print installed VS packages
+      - powershell: ls 'C:\Program Files (x86)\Microsoft SDKs\Windows'
+        displayName: List Windows SDKs
+      - powershell: ls 'C:\Program Files (x86)\Windows Kits'
+        displayName: List Windows Kits
