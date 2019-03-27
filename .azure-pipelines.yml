@@ -1,16 +1,35 @@
-pool:
-  vmImage: vs2017-win2016
-steps:
-  - checkout: self
-    clean: true
-    lfs: false
-    fetchDepth: 1
-    submodules: false
-  - powershell: gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
-    displayName: Print operating system infos
-  - powershell: 'ls env:'
-    displayName: Print environment variables
-  - powershell: $env:path -split ';' | % { ls $_\*.exe -ea:silentlycontinue | % { $_.fullname } } | sort
-    displayName: Print available binaries
-  - powershell: .\vs.ps1
-    displayName: Print installed VS packages
+jobs:
+  - job: vs2017
+    pool:
+      vmImage: vs2017-win2016
+    steps:
+      - checkout: self
+        clean: true
+        lfs: false
+        fetchDepth: 1
+        submodules: false
+      - powershell: gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+        displayName: Print operating system infos
+      - powershell: 'ls env:'
+        displayName: Print environment variables
+      - powershell: $env:path -split ';' | % { ls $_\*.exe -ea:silentlycontinue | % { $_.fullname } } | sort
+        displayName: Print available binaries
+      - powershell: .\vs.ps1
+        displayName: Print installed VS packages
+  - job: vs2019
+    pool:
+      vmImage: windows-2019
+    steps:
+      - checkout: self
+        clean: true
+        lfs: false
+        fetchDepth: 1
+        submodules: false
+      - powershell: gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
+        displayName: Print operating system infos
+      - powershell: 'ls env:'
+        displayName: Print environment variables
+      - powershell: $env:path -split ';' | % { ls $_\*.exe -ea:silentlycontinue | % { $_.fullname } } | sort
+        displayName: Print available binaries
+      - powershell: .\vs.ps1
+        displayName: Print installed VS packages

@@ -1,3 +1,5 @@
+$ErrorActionPreference = 'Stop'
+Register-PSRepository -Default
 Install-Module VSSetup -Scope CurrentUser
 foreach ($instance in Get-VSSetupInstance -All -Prerelease) {
   @($instance) | Format-List
