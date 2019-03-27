@@ -12,3 +12,5 @@ steps:
     displayName: Print environment variables
   - powershell: $env:path -split ';' | % { ls $_\*.exe -ea:silentlycontinue | % { $_.fullname } } | sort
     displayName: Print available binaries
+  - powershell: .\vs.ps1
+    displayName: Print installed VS packages
