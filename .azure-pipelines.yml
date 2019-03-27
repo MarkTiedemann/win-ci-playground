@@ -10,5 +10,5 @@ steps:
     displayName: Print operating system infos
   - powershell: 'ls env:'
     displayName: Print environment variables
-  - powershell: $env:path -split ';' | % { ls $_\*.exe | % { $_.fullname } } | sort
+  - powershell: $env:path -split ';' | % { ls $_\*.exe -ea:silentlycontinue | % { $_.fullname } } | sort
     displayName: Print available binaries
