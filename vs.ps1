@@ -6,5 +6,4 @@ $ErrorActionPreference = 'Stop'
 #   $instance.packages | Format-Table
 # }
 
-gp HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion
 (Get-CimInstance -Class Win32_OperatingSystem).Caption
