@@ -1,0 +1,11 @@
+name: ci
+on: push
+defaults:
+  run:
+    shell: cmd
+jobs:
+  ci:
+    runs-on: windows-2019
+    steps:
+    - name: ci
+      run: ci.cmd
