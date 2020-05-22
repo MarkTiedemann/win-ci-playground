@@ -7,7 +7,22 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: ci
+    - name: Prepare
       run: |
-        curl -LO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x64.exe
+        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.1.0/fastlist.exe
+        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x64.exe
+        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x86.exe
+    - name: Run
+      run: |
+        echo @on
+        ver
+        echo + tasklist /fo csv /nh
+        tasklist /fo csv /nh
+        echo + wmic process get name,processid,parentprocessid /format:csv
+        wmic process get name,processid,parentprocessid /format:csv
+        echo + fastlist.exe
+        fastlist.exe
+        echo + fastlist-0.2.0-x64.exe
         fastlist-0.2.0-x64.exe
+        echo + fastlist-0.2.0-x86.exe
+        fastlist-0.2.0-x86.exe
