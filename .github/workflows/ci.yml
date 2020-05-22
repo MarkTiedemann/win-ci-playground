@@ -10,7 +10,7 @@ jobs:
     - name: Show Windows version info
       run: powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
     - name: List available binaries
-      run: powershell -c "$env:path -split ';' | where { test-path $_ } | % { ls $_\*.exe | % { $_.fullname } } | sort"
+      run: powershell -c "$env:path -split ';' | where { test-path $_ } | % { ls $_\*.exe } | % { $_.fullname } | sort"
     - name: Determine architecture
       run: powershell -c "[IntPtr]::Size"
     - name: Print environment variables
