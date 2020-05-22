@@ -3,9 +3,10 @@ on: push
 defaults:
   run:
     shell: cmd
+    working-directory: .
 jobs:
   ci:
     runs-on: windows-2019
     steps:
     - name: ci
-      run: ci.cmd
+      run: dir
