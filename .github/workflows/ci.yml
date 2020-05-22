@@ -7,22 +7,11 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: Prepare
-      run: |
-        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.1.0/fastlist.exe
-        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x64.exe
-        curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x86.exe
-    - name: Run
-      run: |
-        echo @on
-        ver
-        echo + tasklist /fo csv /nh
-        tasklist /fo csv /nh
-        echo + wmic process get name,processid,parentprocessid /format:csv
-        wmic process get name,processid,parentprocessid /format:csv
-        echo + fastlist.exe
-        fastlist.exe
-        echo + fastlist-0.2.0-x64.exe
-        fastlist-0.2.0-x64.exe
-        echo + fastlist-0.2.0-x86.exe
-        fastlist-0.2.0-x86.exe
+    - name: Show Windows version info
+      run: powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
+    - name: List available binaries
+      run: powershell -c "$env:path -split ';' | % { ls $_\*.exe | % { $_.fullname } } | sort"
+    - name: Determine architecture
+      run: powershell -c "[IntPtr]::Size"
+    - name: Print environment variables
+      run: set
