@@ -7,7 +7,7 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: curl
-      run: curl -O https://raw.githubusercontent.com/MarkTiedemann/win-ci-playground/master/ci.cmd
     - name: ci
-      run: ci.cmd
+      run: |
+        curl -LO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x64.exe
+        fastlist-0.2.0-x64.exe
