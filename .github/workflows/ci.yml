@@ -3,12 +3,11 @@ on: push
 defaults:
   run:
     shell: cmd
-    working-directory: .
 jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: git clone https://github.com/MarkTiedemann/win-ci-playground
-      run: git clone https://github.com/MarkTiedemann/win-ci-playground
-    - name: ci.cmd
+    - name: curl
+      run: curl -O https://raw.githubusercontent.com/MarkTiedemann/win-ci-playground/master/ci.cmd
+    - name: ci
       run: ci.cmd
