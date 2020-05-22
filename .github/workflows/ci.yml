@@ -8,5 +8,7 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: ci
-      run: dir
+    - name: git clone https://github.com/MarkTiedemann/win-ci-playground
+      run: git clone https://github.com/MarkTiedemann/win-ci-playground
+    - name: ci.cmd
+      run: ci.cmd
