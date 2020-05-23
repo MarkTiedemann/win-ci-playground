@@ -7,11 +7,7 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: Show Windows version info
-      run: powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
-    # - name: List available binaries
-    # run: powershell -c "$env:path -split ';' | where { test-path $_ } | % { ls $_\*.exe } | % { $_.fullname } | sort"
-    - name: Determine architecture
-      run: powershell -c "[IntPtr]::Size"
-    - name: Print environment variables
-      run: set
+    - name: Init
+      run: |
+        set
+        powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
