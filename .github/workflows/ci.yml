@@ -14,4 +14,4 @@ jobs:
     - name: Print available binaries
       run: powershell -c "$Env:Path -split ';' | Where-Object { Test-Path $_ } | ForEach-Object { Get-ChildItem $_\*.exe } | ForEach-Object { $_.FullName } | Sort-Object"
     - name: Print running processes
-      run: curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x86.exe && fastlist-0.2.0-x86.exe
+      run: curl -fsSLO https://github.com/MarkTiedemann/fastlist/releases/download/v0.2.0/fastlist-0.2.0-x64.exe && fastlist-0.2.0-x64.exe
