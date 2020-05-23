@@ -1,6 +1,10 @@
 image:
   - Visual Studio 2019
 build: off
+matrix:
+  allow_failures:
+    - platform: x86
+    - platform: x64
 test_script:
   - ps: .\.appveyor\ci.ps1
   - ps: docker run -v "${pwd}:C:\mnt" mcr.microsoft.com/windows/servercore:ltsc2019@sha256:2ecf1e2987b91b41f576afd7f56aa40c9ddbc691d7b6b066c64d8f27fb3070ca powershell.exe -f C:\mnt\.appveyor\ci.ps1
