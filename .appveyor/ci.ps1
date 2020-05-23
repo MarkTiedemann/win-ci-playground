@@ -1,2 +1,2 @@
 $ErrorActionPreference = "Stop";
-Write-Host "Hello, world!";
+Write-Host "Test, test";
