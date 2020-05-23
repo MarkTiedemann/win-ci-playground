@@ -11,5 +11,5 @@ jobs:
       run: powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
     - name: Print environment variables
       run: set
-    - name: Print path
-      run: powershell -c "$Env:Path -split ';' | Where-Object { Test-Path $_ }"
+    - name: Print available binaries
+      run: powershell -c "$Env:Path -split ';' | Where-Object { Test-Path $_ } | ForEach-Object { Get-ChildItem $_\*.exe } | ForEach-Object { $_.FullName } | Sort-Object"
