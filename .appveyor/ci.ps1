@@ -1,2 +1,3 @@
 $ErrorActionPreference = "Stop";
-Write-Host "Test, test";
+Write-Host $([IntPtr]::Size);
+Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion";
