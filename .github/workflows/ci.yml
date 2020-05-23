@@ -1,4 +1,4 @@
-name: ci
+name: CI
 on: push
 defaults:
   run:
@@ -7,7 +7,7 @@ jobs:
   ci:
     runs-on: windows-2019
     steps:
-    - name: Init
+    - name: Print env info
       run: |
-        set
         powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
+        set
