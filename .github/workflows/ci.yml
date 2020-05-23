@@ -4,10 +4,12 @@ defaults:
   run:
     shell: cmd
 jobs:
-  ci:
+  CI:
     runs-on: windows-2019
     steps:
-    - name: Print env info
-      run: |
-        powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
-        set
+    - name: Print Windows info
+      run: powershell -c "gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'"
+    - name: Print environment variables
+      run: set
+    - name: Print path
+      run: powershell -c "$Env:Path -split ';' | Where-Object { Test-Path $_ }"
